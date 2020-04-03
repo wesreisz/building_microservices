@@ -12,10 +12,10 @@ type Hello struct {
 }
 
 func NewHello(l *log.Logger) *Hello {
-	return &Hello{1}
+	return &Hello{l}
 }
 
-func (h *Hello) ServerHTTP(rw http.ResponseWriter, r *http.Request) {
+func (h *Hello) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	h.l.Println("Hello World")
 	d, err := ioutil.ReadAll(r.Body)
 
